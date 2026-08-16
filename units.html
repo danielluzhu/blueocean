@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Units Available — Blue Ocean Housing | Seattle</title>
+<meta name="description" content="Currently known vacant studio units at Blue Ocean Housing, 4544 20th Ave NE, Seattle — room number, floor, size, and availability date.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<style>
+  :root{
+    --ink:#000;
+    --charcoal:#262626;
+    --accent:#222FB8;
+    --accent-light:#CED1EF;
+    --line:#F2F4F7;
+    --bg-alt:#CED1EF;
+    --maxw:1400px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Futura';
+    color:var(--ink);
+    background:#fff;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Futura';
+    font-weight:500;
+    line-height:1.1;
+    margin:0 0 .4em;
+  }
+  p{margin:0 0 1em;font-size:16px;}
+  a{color:var(--accent);text-decoration:none;transition:color .1s linear;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--charcoal);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  /* NAV — thin segmented bar */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    display:grid;grid-template-columns:1.6fr 1.4fr 2fr 1fr;
+    height:64px;
+    background:#fff;
+    border-bottom:1px solid #000;
+  }
+  header.site>div{
+    display:flex;align-items:center;
+    padding:0 24px;
+    border-right:1px solid #000;
+    overflow:hidden;
+  }
+  header.site>div:last-child{border-right:none;justify-content:flex-end;}
+  .brand{
+    display:inline-flex;align-items:center;
+    text-decoration:none;
+  }
+  .brand img{height:32px;width:auto;display:block;}
+  footer .brand img{height:28px;}
+  .nav-address{font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);white-space:nowrap;}
+  .nav-address a{color:var(--charcoal);}
+  .nav-address a:hover{color:var(--accent);}
+  .nav-links{list-style:none;display:flex;gap:26px;margin:0;padding:0;white-space:nowrap;}
+  .nav-links a{font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-links a.active{color:var(--accent);}
+
+  /* MOBILE NAV */
+  .nav-toggle-input{display:none;}
+  .hamburger{
+    display:none;flex-direction:column;justify-content:center;gap:5px;
+    width:26px;height:26px;padding:2px;cursor:pointer;flex-shrink:0;
+  }
+  .hamburger span{display:block;height:2px;width:100%;background:#000;border-radius:1px;transition:transform .15s linear,opacity .15s linear;}
+  .nav-toggle-input:checked ~ header .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle-input:checked ~ header .hamburger span:nth-child(2){opacity:0;}
+  .nav-toggle-input:checked ~ header .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-nav{display:none;position:sticky;top:64px;z-index:49;background:#fff;border-bottom:1px solid #000;}
+  .mobile-nav ul{list-style:none;margin:0;padding:8px 24px;}
+  .mobile-nav a{display:block;padding:16px 0;font-size:.9rem;letter-spacing:.02em;text-transform:uppercase;color:var(--charcoal);border-top:1px solid var(--line);}
+  .mobile-nav li:first-child a{border-top:none;}
+  .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+  .nav-toggle-input:checked ~ .mobile-nav{display:block;}
+  @media (min-width:961px){
+    .mobile-nav{display:none !important;}
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--accent);color:#fff;
+    padding:13px 25px;border-radius:50px;
+    border:1px solid var(--accent);
+    font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
+    text-align:center;cursor:pointer;
+    transition:background .15s linear,color .15s linear,border-color .15s linear;
+  }
+  .btn:hover{background:#fff;color:var(--accent);border-color:var(--accent);}
+  .btn.small{padding:9px 20px;font-size:.72rem;}
+
+  /* MASTHEAD — centered intro */
+  .masthead{padding:72px 0 40px;text-align:center;}
+  .masthead-inner{max-width:760px;margin:0 auto;}
+  .masthead h1{font-size:clamp(2rem,3.6vw,3rem);}
+  .masthead p{color:#333;font-size:1.05rem;}
+
+  section{padding:0;}
+
+  /* DISCLAIMER CALLOUT */
+  .disclaimer{
+    background:var(--bg-alt);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .disclaimer .wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .disclaimer strong{font-size:.95rem;white-space:nowrap;}
+  .disclaimer p{margin:0;color:#333;font-size:.9rem;}
+  .disclaimer a{font-weight:500;}
+
+  /* FLOOR PLAN */
+  .floorplan-wrap{padding-top:56px;}
+  .floorplan-wrap h2{font-size:clamp(1.6rem,2.6vw,2.2rem);}
+  .floorplan-wrap>p{color:#333;max-width:640px;}
+  .floorplan-link{display:block;border:1px solid var(--line);}
+  .floorplan-link img{width:100%;cursor:zoom-in;}
+  .floorplan-note{color:#777;font-size:.8rem;margin-top:10px;}
+
+  /* UNITS TABLE */
+  .units-wrap{padding-top:56px;padding-bottom:96px;}
+  table.units-table{width:100%;border-collapse:collapse;}
+  table.units-table th{
+    text-align:left;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;
+    font-weight:600;color:var(--charcoal);padding:0 0 14px;border-bottom:1px solid #000;
+  }
+  table.units-table td{
+    padding:18px 0;border-top:1px solid var(--line);font-size:.95rem;vertical-align:top;
+  }
+  table.units-table td:last-child, table.units-table th:last-child{text-align:right;}
+  table.units-table .unit-num{font-size:1.15rem;font-weight:500;}
+  table.units-table .unit-desc{color:#555;}
+  table.units-table .unit-avail{white-space:nowrap;}
+  tr.is-pending{opacity:.6;}
+  .avail-cell{display:inline-flex;flex-direction:column;align-items:flex-end;gap:3px;}
+  .status-badge{
+    display:inline-block;font-size:.68rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.05em;padding:3px 10px;border-radius:20px;background:#eee;color:#555;
+  }
+  .was-date{font-size:.72rem;color:#888;white-space:nowrap;}
+  tr.is-occupied{opacity:.5;}
+  .status-badge.occupied{background:#f2f2f2;color:#999;}
+  .occupied-details{margin-top:64px;padding-top:32px;border-top:1px solid #000;}
+  .occupied-details summary{cursor:pointer;list-style:none;}
+  .occupied-details summary::-webkit-details-marker{display:none;}
+  .occupied-details summary h2{display:inline-flex;align-items:center;gap:10px;}
+  .occupied-details summary h2::after{content:'▾';font-size:.65em;transition:transform .15s linear;}
+  .occupied-details[open] summary h2::after{transform:rotate(180deg);}
+  .occupied-details summary p{color:#333;max-width:640px;margin-top:8px;}
+  .occupied-details table{margin-top:24px;}
+  table.units-table tbody tr:last-child td{border-bottom:1px solid var(--line);}
+
+  .units-note{color:#777;font-size:.8rem;margin-top:28px;}
+
+  footer{padding:40px 0;border-top:1px solid #000;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .brand{font-size:1.1rem;}
+  footer small{color:#777;font-size:.78rem;}
+  .foot-links{display:flex;gap:22px;list-style:none;padding:0;margin:0;}
+  .foot-links a{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--charcoal);}
+  .foot-links a:hover{color:var(--accent);}
+
+  @media (max-width:960px){
+    header.site{grid-template-columns:1fr auto;}
+    header.site>div:nth-child(2),header.site>div:nth-child(3){display:none;}
+    header.site>div:last-child{gap:16px;}
+    .hamburger{display:flex;}
+  }
+  @media (max-width:640px){
+    .floorplan-link{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .floorplan-link img{width:auto;max-width:none;height:420px;}
+    table.units-table thead{display:none;}
+    table.units-table tr{display:block;border-top:1px solid var(--line);padding:16px 0;}
+    table.units-table tbody tr:last-child{border-bottom:1px solid var(--line);}
+    table.units-table td{display:flex;justify-content:space-between;gap:16px;border-top:none;padding:4px 0;text-align:right;}
+    table.units-table td:first-child{padding-top:0;}
+    table.units-table td::before{content:attr(data-label);color:#777;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;text-align:left;}
+    table.units-table td:last-child{text-align:right;}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
+<header class="site">
+  <div><a href="index.html" class="brand"><img src="images/logo.png" alt="Blue Ocean Housing"></a></div>
+  <div class="nav-address"><a href="https://www.google.com/maps?q=4544+20th+Ave+NE,+Seattle,+WA+98105" target="_blank" rel="noreferrer noopener">4544 20th Ave NE, Seattle</a></div>
+  <div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">The Building</a></li>
+      <li><a href="index.html#unit">The Studio</a></li>
+      <li><a href="index.html#location">Location</a></li>
+      <li><a href="units.html" class="active">Units Available</a></li>
+    </ul>
+  </div>
+  <div>
+    <label for="nav-toggle" class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <a href="index.html#interest" class="btn small">Contact Us</a>
+  </div>
+</header>
+
+<nav class="mobile-nav">
+  <ul>
+    <li><a href="index.html#about">The Building</a></li>
+    <li><a href="index.html#unit">The Studio</a></li>
+    <li><a href="index.html#location">Location</a></li>
+    <li><a href="units.html" class="active">Units Available</a></li>
+    <li><a href="fair-housing.html">Fair Housing</a></li>
+    <li><a href="index.html#interest">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <div class="masthead">
+    <div class="masthead-inner">
+      <span class="eyebrow">Availability</span>
+      <h1>Units Available</h1>
+      <p>A look at which studios are currently coming open at Blue Ocean Housing — room number, floor, size, and expected availability.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <div class="wrap">
+      <strong>⚠ Please note:</strong>
+      <p>This list reflects known vacancies and may not be fully up to date. For current availability, pricing, and to confirm a unit before applying, please contact the Blue Ocean Housing team directly at <a href="mailto:reach.seattle.homes@gmail.com">reach.seattle.homes@gmail.com</a> or <a href="index.html#interest">contact us</a>.</p>
+    </div>
+  </div>
+
+  <div class="floorplan-wrap wrap">
+    <span class="eyebrow">Building Layout</span>
+    <h2>Where each unit sits</h2>
+    <p>Ground floor and floors 1–4, with unit numbers matching the tables below.</p>
+    <a href="images/floor-plans.jpg" target="_blank" rel="noreferrer noopener" class="floorplan-link">
+      <img src="images/floor-plans.jpg" alt="Floor plan of Blue Ocean Housing showing the ground floor and floors 1 through 4, with unit numbers and layouts for each studio">
+    </a>
+    <p class="floorplan-note">Scroll to see each floor, or tap the floor plan to view it full size.</p>
+  </div>
+
+  <div class="units-wrap wrap">
+    <table class="units-table">
+      <thead>
+        <tr>
+          <th>Unit</th>
+          <th>Floor</th>
+          <th>Size</th>
+          <th>Description</th>
+          <th>Available</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Unit" class="unit-num">004</td>
+          <td data-label="Floor">Ground</td>
+          <td data-label="Size">300 sqft</td>
+          <td data-label="Description" class="unit-desc">Ground level unit</td>
+          <td data-label="Available" class="unit-avail">Early August</td>
+        </tr>
+        <tr>
+          <td data-label="Unit" class="unit-num">101</td>
+          <td data-label="Floor">1</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway North unit</td>
+          <td data-label="Available" class="unit-avail">Contact for date</td>
+        </tr>
+        <tr class="is-pending">
+          <td data-label="Unit" class="unit-num">201</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northwest unit</td>
+          <td data-label="Available" class="unit-avail"><span class="avail-cell"><span class="status-badge">Pending</span><span class="was-date">Was: Late August</span></span></td>
+        </tr>
+        <tr>
+          <td data-label="Unit" class="unit-num">401</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northwest unit</td>
+          <td data-label="Available" class="unit-avail">Late September</td>
+        </tr>
+        <tr>
+          <td data-label="Unit" class="unit-num">402</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway North unit</td>
+          <td data-label="Available" class="unit-avail">Mid September</td>
+        </tr>
+        <tr>
+          <td data-label="Unit" class="unit-num">403</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northeast unit</td>
+          <td data-label="Available" class="unit-avail">Mid August</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="units-note">Floor is inferred from the unit number (e.g. unit 403 is on floor 4). Sizes and descriptions are approximate. Don't see a unit that fits — or want to double check one above? Reach out and we'll help you find the right fit.</p>
+
+    <details class="occupied-details">
+      <summary>
+        <span class="eyebrow">Currently Occupied</span>
+        <h2>The rest of the building</h2>
+        <p>These 25 studios are occupied and not currently available — tap to view them. Reach out if you'd like to be notified when one comes open.</p>
+      </summary>
+      <table class="units-table">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Floor</th>
+            <th>Size</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">001</td>
+          <td data-label="Floor">Ground</td>
+          <td data-label="Size">300 sqft</td>
+          <td data-label="Description" class="unit-desc">Ground level unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">002</td>
+          <td data-label="Floor">Ground</td>
+          <td data-label="Size">300 sqft</td>
+          <td data-label="Description" class="unit-desc">Ground level unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">003</td>
+          <td data-label="Floor">Ground</td>
+          <td data-label="Size">300 sqft</td>
+          <td data-label="Description" class="unit-desc">Ground level unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">102</td>
+          <td data-label="Floor">1</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">103</td>
+          <td data-label="Floor">1</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">104</td>
+          <td data-label="Floor">1</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">105</td>
+          <td data-label="Floor">1</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">106</td>
+          <td data-label="Floor">1</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">202</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway North unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">203</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">204</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">205</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">206</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">207</td>
+          <td data-label="Floor">2</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southwest unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">301</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northwest unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">302</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway North unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">303</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Northeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">304</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">305</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">306</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">307</td>
+          <td data-label="Floor">3</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southwest unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">404</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southeast unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">405</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">406</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">230 sqft</td>
+          <td data-label="Description" class="unit-desc">Hallway South unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        <tr class="is-occupied">
+          <td data-label="Unit" class="unit-num">407</td>
+          <td data-label="Floor">4</td>
+          <td data-label="Size">250 sqft</td>
+          <td data-label="Description" class="unit-desc">Corner Southwest unit</td>
+          <td data-label="Status" class="unit-avail"><span class="status-badge occupied">Occupied</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <a href="index.html" class="brand"><img src="images/logo.png" alt="Blue Ocean Housing"></a>
+    <ul class="foot-links">
+      <li><a href="index.html#about">The Building</a></li>
+      <li><a href="index.html#unit">The Studio</a></li>
+      <li><a href="index.html#location">Location</a></li>
+      <li><a href="units.html">Units Available</a></li>
+      <li><a href="fair-housing.html">Fair Housing</a></li>
+      <li><a href="index.html#interest">Contact</a></li>
+    </ul>
+    <small>4544 20th Ave NE, Seattle, WA 98105</small>
+  </div>
+</footer>
+
+</body>
+</html>

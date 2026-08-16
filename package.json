@@ -1,0 +1,10 @@
+{
+  "name": "blueocean",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch server.js"
+  },
+  "dependencies": {
+    "nodemailer": "^9.0.3"
+  }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Housing &amp; Equal Opportunity — Blue Ocean Housing | Seattle</title>
+<meta name="description" content="Blue Ocean Housing's Equal Housing Opportunity statement and a summary of fair housing protections under federal law, Washington State law, and the City of Seattle.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<style>
+  :root{
+    --ink:#000;
+    --charcoal:#262626;
+    --accent:#222FB8;
+    --accent-light:#CED1EF;
+    --line:#F2F4F7;
+    --bg-alt:#CED1EF;
+    --maxw:1400px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Futura';
+    color:var(--ink);
+    background:#fff;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Futura';
+    font-weight:500;
+    line-height:1.1;
+    margin:0 0 .4em;
+  }
+  p{margin:0 0 1em;font-size:16px;}
+  a{color:var(--accent);text-decoration:none;transition:color .1s linear;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--charcoal);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  /* NAV — thin segmented bar */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    display:grid;grid-template-columns:1.6fr 1.4fr 2fr 1fr;
+    height:64px;
+    background:#fff;
+    border-bottom:1px solid #000;
+  }
+  header.site>div{
+    display:flex;align-items:center;
+    padding:0 24px;
+    border-right:1px solid #000;
+    overflow:hidden;
+  }
+  header.site>div:last-child{border-right:none;justify-content:flex-end;}
+  .brand{
+    display:inline-flex;align-items:center;
+    text-decoration:none;
+  }
+  .brand img{height:32px;width:auto;display:block;}
+  footer .brand img{height:28px;}
+  .nav-address{font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);white-space:nowrap;}
+  .nav-address a{color:var(--charcoal);}
+  .nav-address a:hover{color:var(--accent);}
+  .nav-links{list-style:none;display:flex;gap:26px;margin:0;padding:0;white-space:nowrap;}
+  .nav-links a{font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-links a.active{color:var(--accent);}
+
+  /* MOBILE NAV */
+  .nav-toggle-input{display:none;}
+  .hamburger{
+    display:none;flex-direction:column;justify-content:center;gap:5px;
+    width:26px;height:26px;padding:2px;cursor:pointer;flex-shrink:0;
+  }
+  .hamburger span{display:block;height:2px;width:100%;background:#000;border-radius:1px;transition:transform .15s linear,opacity .15s linear;}
+  .nav-toggle-input:checked ~ header .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle-input:checked ~ header .hamburger span:nth-child(2){opacity:0;}
+  .nav-toggle-input:checked ~ header .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-nav{display:none;position:sticky;top:64px;z-index:49;background:#fff;border-bottom:1px solid #000;}
+  .mobile-nav ul{list-style:none;margin:0;padding:8px 24px;}
+  .mobile-nav a{display:block;padding:16px 0;font-size:.9rem;letter-spacing:.02em;text-transform:uppercase;color:var(--charcoal);border-top:1px solid var(--line);}
+  .mobile-nav li:first-child a{border-top:none;}
+  .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+  .nav-toggle-input:checked ~ .mobile-nav{display:block;}
+  @media (min-width:961px){
+    .mobile-nav{display:none !important;}
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--accent);color:#fff;
+    padding:13px 25px;border-radius:50px;
+    border:1px solid var(--accent);
+    font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
+    text-align:center;cursor:pointer;
+    transition:background .15s linear,color .15s linear,border-color .15s linear;
+  }
+  .btn:hover{background:#fff;color:var(--accent);border-color:var(--accent);}
+  .btn.small{padding:9px 20px;font-size:.72rem;}
+
+  /* MASTHEAD — centered intro */
+  .masthead{padding:72px 0 40px;text-align:center;}
+  .masthead-inner{max-width:760px;margin:0 auto;}
+  .masthead h1{font-size:clamp(2rem,3.6vw,3rem);}
+  .masthead p{color:#333;font-size:1.05rem;}
+
+  section{padding:0;}
+
+  /* DISCLAIMER CALLOUT */
+  .disclaimer{
+    background:var(--bg-alt);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .disclaimer .wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .disclaimer strong{font-size:.95rem;white-space:nowrap;}
+  .disclaimer p{margin:0;color:#333;font-size:.9rem;}
+  .disclaimer a{font-weight:500;}
+
+  /* LEGAL CONTENT */
+  .legal-wrap{padding-top:56px;padding-bottom:96px;max-width:820px;margin:0 auto;}
+  .legal-wrap h2{font-size:1.4rem;margin-top:2.2em;padding-top:.6em;border-top:1px solid var(--line);}
+  .legal-wrap h2:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+  .legal-wrap h3{font-size:1.02rem;margin-top:1.4em;}
+  .legal-wrap p{color:#333;}
+  .legal-wrap ul{color:#333;margin:0 0 1em;padding-left:1.3em;}
+  .legal-wrap li{margin-bottom:.4em;}
+  .legal-wrap .fine{color:#666;font-size:.85rem;}
+
+  .eho-badge{
+    display:flex;align-items:center;gap:18px;
+    border:1px solid #000;padding:22px 24px;margin:0 0 1.6em;
+  }
+  .eho-badge .mark{
+    flex-shrink:0;width:52px;height:52px;border-radius:50%;
+    border:2px solid var(--accent);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;line-height:1;
+  }
+  .eho-badge p{margin:0;font-size:.92rem;color:#222;}
+  .eho-badge strong{display:block;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+
+  footer{padding:40px 0;border-top:1px solid #000;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .brand{font-size:1.1rem;}
+  footer small{color:#666;font-size:.78rem;}
+  .foot-links{display:flex;gap:22px;list-style:none;padding:0;margin:0;flex-wrap:wrap;}
+  .foot-links a{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--charcoal);}
+  .foot-links a:hover{color:var(--accent);}
+
+  @media (max-width:960px){
+    header.site{grid-template-columns:1fr auto;}
+    header.site>div:nth-child(2),header.site>div:nth-child(3){display:none;}
+    header.site>div:last-child{gap:16px;}
+    .hamburger{display:flex;}
+  }
+  @media (max-width:640px){
+    .eho-badge{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
+<header class="site">
+  <div><a href="index.html" class="brand"><img src="images/logo.png" alt="Blue Ocean Housing"></a></div>
+  <div class="nav-address"><a href="https://www.google.com/maps?q=4544+20th+Ave+NE,+Seattle,+WA+98105" target="_blank" rel="noreferrer noopener">4544 20th Ave NE, Seattle</a></div>
+  <div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">The Building</a></li>
+      <li><a href="index.html#unit">The Studio</a></li>
+      <li><a href="index.html#location">Location</a></li>
+      <li><a href="units.html">Units Available</a></li>
+    </ul>
+  </div>
+  <div>
+    <label for="nav-toggle" class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <a href="index.html#interest" class="btn small">Contact Us</a>
+  </div>
+</header>
+
+<nav class="mobile-nav">
+  <ul>
+    <li><a href="index.html#about">The Building</a></li>
+    <li><a href="index.html#unit">The Studio</a></li>
+    <li><a href="index.html#location">Location</a></li>
+    <li><a href="units.html">Units Available</a></li>
+    <li><a href="fair-housing.html" class="active">Fair Housing</a></li>
+    <li><a href="index.html#interest">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <div class="masthead">
+    <div class="masthead-inner">
+      <span class="eyebrow">Fair Housing</span>
+      <h1>Fair Housing &amp; Equal Opportunity</h1>
+      <p>Blue Ocean Housing is committed to fair housing practices for every applicant and resident at 4544 20th Ave NE, Seattle, WA 98105.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <div class="wrap">
+      <strong>⚠ Please note:</strong>
+      <p>This page is a general informational summary, not legal advice, and is not a substitute for review by a qualified attorney or the agencies linked below. Fair housing laws and local ordinances change — please confirm current requirements before relying on this page for compliance purposes.</p>
+    </div>
+  </div>
+
+  <div class="legal-wrap wrap">
+
+    <div class="eho-badge">
+      <div class="mark" aria-hidden="true">⌂</div>
+      <p>
+        <strong>Equal Housing Opportunity</strong>
+        We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the nation. We encourage and support an affirmative advertising and marketing program in which there are no barriers to obtaining housing because of race, color, religion, sex, disability, familial status, or national origin.
+      </p>
+    </div>
+
+    <h2>Our Commitment</h2>
+    <p>Blue Ocean Housing does not discriminate against any applicant or resident on the basis of any characteristic protected under federal, Washington State, or City of Seattle law. Housing decisions — including applications, screening, leasing, and terms of tenancy — are made on a consistent, non-discriminatory basis.</p>
+
+    <h2>Federal Law — the Fair Housing Act</h2>
+    <p>The federal Fair Housing Act (42 U.S.C. § 3601 et seq.) prohibits housing discrimination based on:</p>
+    <ul>
+      <li>Race or color</li>
+      <li>National origin</li>
+      <li>Religion</li>
+      <li>Sex (including, per current HUD guidance, sexual orientation and gender identity)</li>
+      <li>Familial status (including families with children under 18, and pregnant people)</li>
+      <li>Disability</li>
+    </ul>
+
+    <h2>Washington State Law</h2>
+    <p>The Washington Law Against Discrimination (RCW 49.60, including RCW 49.60.222) extends protections further. Categories commonly cited under state law include:</p>
+    <ul>
+      <li>Race, creed, color, and national origin</li>
+      <li>Sex and marital status</li>
+      <li>Sexual orientation and gender identity</li>
+      <li>Families with children status</li>
+      <li>Honorably discharged veteran or military status</li>
+      <li>Disability — including sensory, mental, or physical disability, and the use of a trained dog guide or service animal</li>
+      <li>Source of income — including Section 8 and other housing vouchers or subsidies</li>
+    </ul>
+    <p class="fine">State law is amended periodically; confirm the current text of RCW 49.60 with the <a href="https://www.hum.wa.gov/" target="_blank" rel="noreferrer noopener">Washington State Human Rights Commission</a> before relying on this summary.</p>
+
+    <h2>City of Seattle</h2>
+    <p>4544 20th Ave NE is within Seattle city limits, so the property is governed by the City of Seattle's Open Housing ordinance (Seattle Municipal Code Chapter 14.08), which is broader than state and federal law. In addition to the categories above, Seattle law generally also prohibits discrimination based on:</p>
+    <ul>
+      <li>Ancestry and political ideology</li>
+      <li>Age</li>
+      <li>Parental status</li>
+      <li>Gender expression</li>
+      <li>Immigration or citizenship status</li>
+      <li>Student status</li>
+      <li>Participation in a Section 8 or other subsidy program</li>
+      <li>Criminal record — Seattle's Fair Chance Housing Ordinance (SMC 14.09) separately restricts how criminal history may be used in tenant screening and advertising</li>
+    </ul>
+    <p class="fine">Seattle's fair housing and tenant screening ordinances are updated from time to time. Current requirements — including any tenant screening, advertising, and notice obligations — are maintained by the <a href="https://www.seattle.gov/civilrights" target="_blank" rel="noreferrer noopener">Seattle Office for Civil Rights</a>.</p>
+
+    <h3>A note on "Seattle / King County"</h3>
+    <p>Because this property sits within Seattle city limits, Seattle's municipal code — not the King County Code, which applies to unincorporated areas of the county — governs fair housing obligations here.</p>
+
+    <h2>Reasonable Accommodations</h2>
+    <p>Applicants and residents with disabilities may request reasonable accommodations or modifications related to an application, lease terms, or use of the property. To make a request, contact us at <a href="mailto:reach.seattle.homes@gmail.com">reach.seattle.homes@gmail.com</a>.</p>
+
+    <h2>Filing a Complaint</h2>
+    <p>If you believe you have experienced housing discrimination, you can contact:</p>
+    <ul>
+      <li><a href="https://www.hud.gov/fairhousing" target="_blank" rel="noreferrer noopener">U.S. Department of Housing and Urban Development (HUD)</a> — Office of Fair Housing and Equal Opportunity</li>
+      <li><a href="https://www.hum.wa.gov/" target="_blank" rel="noreferrer noopener">Washington State Human Rights Commission</a></li>
+      <li><a href="https://www.seattle.gov/civilrights" target="_blank" rel="noreferrer noopener">Seattle Office for Civil Rights</a></li>
+    </ul>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <a href="index.html" class="brand"><img src="images/logo.png" alt="Blue Ocean Housing"></a>
+    <ul class="foot-links">
+      <li><a href="index.html#about">The Building</a></li>
+      <li><a href="index.html#unit">The Studio</a></li>
+      <li><a href="index.html#location">Location</a></li>
+      <li><a href="units.html">Units Available</a></li>
+      <li><a href="fair-housing.html">Fair Housing</a></li>
+      <li><a href="index.html#interest">Contact</a></li>
+    </ul>
+    <small>4544 20th Ave NE, Seattle, WA 98105</small>
+  </div>
+</footer>
+
+</body>
+</html>
