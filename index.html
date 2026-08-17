@@ -491,9 +491,9 @@
     button.textContent = 'Sending…';
 
     try {
-      const res = await fetch('/api/interest', {
+      const res = await fetch('https://formspree.io/f/mjybalka', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           fname: form.fname.value,
           lname: form.lname.value,
