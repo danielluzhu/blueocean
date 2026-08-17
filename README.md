@@ -1,5 +1,7 @@
 # blueocean
 
+https://danielluzhu.github.io/blueocean/index.html#about
+
 Blue Ocean Housing is a studio apartment building by the University of Washington. 
 
 I want to create a website for prospective tenants to see photos and details of the building.
