@@ -1,6 +1,6 @@
 # blueocean
 
-https://danielluzhu.github.io/blueocean/index.html#about
+https://danielluzhu.github.io/blueocean/index.html
 
 Blue Ocean Housing is a studio apartment building by the University of Washington. 
 
