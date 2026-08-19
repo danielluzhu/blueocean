@@ -8,6 +8,9 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="images/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,19 +44,19 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    font-family:'Futura';
+    font-family:'Jost','Futura','Century Gothic',sans-serif;
     color:var(--ink);
     background:#fff;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3{
-    font-family:'Futura';
+    font-family:'Jost','Futura','Century Gothic',sans-serif;
     font-weight:500;
     line-height:1.1;
     margin:0 0 .4em;
   }
-  p{margin:0 0 1em;font-size:16px;}
+  p{margin:0 0 1em;font-size:16px;line-height:1.65;}
   a{color:var(--accent);text-decoration:none;transition:color .1s linear;}
   img{max-width:100%;display:block;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
@@ -96,8 +99,10 @@
   .nav-address a{color:var(--charcoal);}
   .nav-address a:hover{color:var(--accent);}
   .nav-links{list-style:none;display:flex;gap:26px;margin:0;padding:0;white-space:nowrap;}
-  .nav-links a{font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);}
+  .nav-links a{position:relative;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);}
+  .nav-links a::after{content:'';position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:var(--accent);transition:right .2s cubic-bezier(.16,1,.3,1);}
   .nav-links a:hover{color:var(--accent);}
+  .nav-links a:hover::after{right:0;}
 
   /* MOBILE NAV */
   .nav-toggle-input{display:none;}
@@ -123,9 +128,9 @@
     border:1px solid var(--accent);
     font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
     text-align:center;cursor:pointer;
-    transition:background .15s linear,color .15s linear,border-color .15s linear;
+    transition:background .15s linear,color .15s linear,border-color .15s linear,transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s cubic-bezier(.16,1,.3,1);
   }
-  .btn:hover{background:#fff;color:var(--accent);border-color:var(--accent);}
+  .btn:hover{background:#fff;color:var(--accent);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 20px rgba(34,47,184,.18);}
   .btn.small{padding:9px 20px;font-size:.72rem;}
 
   .link-btn{
@@ -136,12 +141,15 @@
 
   /* HERO — full-bleed, no overlay */
   .hero{width:100%;aspect-ratio:16/8;overflow:hidden;background:var(--bg-alt);}
-  .hero img{width:100%;height:100%;object-fit:cover;}
+  .hero img{width:100%;height:100%;object-fit:cover;animation:heroZoom 22s cubic-bezier(.4,0,.2,1) infinite alternate;}
+  @keyframes heroZoom{from{transform:scale(1);}to{transform:scale(1.07);}}
+  @media (prefers-reduced-motion:reduce){.hero img{animation:none;}}
 
   /* SIDE BY SIDE (alternating text/media) */
   .sbs{display:grid;grid-template-columns:1fr 1fr;min-height:520px;}
   .sbs .media{overflow:hidden;}
-  .sbs .media img{width:100%;height:100%;object-fit:cover;}
+  .sbs .media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .sbs .media:hover img{transform:scale(1.05);}
   .sbs .copy{display:flex;align-items:center;}
   .sbs .copy-inner{max-width:480px;padding:60px;margin:0 auto;}
   .sbs .copy-inner h2{font-size:clamp(1.9rem,2.6vw,2.7rem);}
@@ -166,8 +174,9 @@
   .feature-list span{color:#555;font-size:.88rem;text-align:right;}
 
   .amenity-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1px;background:#000;margin-top:1px;}
-  .amenity-row img{width:100%;height:100%;object-fit:cover;display:block;}
-  .amenity-row figure{margin:0;background:#fff;position:relative;}
+  .amenity-row img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .amenity-row figure{margin:0;background:#fff;position:relative;overflow:hidden;}
+  .amenity-row figure:hover img{transform:scale(1.06);}
   .amenity-row figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);color:#fff;}
   .amenity-row figcaption .cap-title{display:block;font-weight:500;font-size:1.3rem;}
   .amenity-row figcaption .cap-sub{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;opacity:.9;}
@@ -205,14 +214,16 @@
   .audience p{color:#333;font-size:.95rem;margin:0;}
 
   /* CTA / FORM */
-  .cta-section{background:var(--accent);color:#fff;padding:96px 0;}
+  .cta-section{background:linear-gradient(135deg,var(--accent) 0%,#181f8a 100%);color:#fff;padding:96px 0;}
   .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
   .cta-grid h2{color:#fff;font-size:clamp(2rem,3vw,2.8rem);}
   .cta-grid p{color:rgba(255,255,255,.8);}
   .cta-grid .eyebrow{color:var(--accent-light);}
-  .cta-photo{margin-top:28px;max-width:420px;}
-  .cta-photo img{height:220px;object-fit:cover;width:100%;}
+  .cta-photo{margin-top:28px;max-width:420px;overflow:hidden;}
+  .cta-photo img{height:220px;object-fit:cover;width:100%;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .cta-photo:hover img{transform:scale(1.06);}
 
+  .form-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:36px;box-shadow:0 24px 60px rgba(0,0,0,.18);}
   .form-card label{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;font-weight:500;margin-bottom:6px;color:#fff;}
   .form-row{display:flex;gap:14px;margin-bottom:18px;}
   .form-row .fg{flex:1;}
@@ -230,9 +241,10 @@
   .form-card button{
     width:100%;padding:14px;border:1px solid #fff;border-radius:50px;background:#fff;color:#000;
     font-weight:500;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;
-    transition:background .15s linear,color .15s linear;
+    transition:background .15s linear,color .15s linear,transform .2s cubic-bezier(.16,1,.3,1);
   }
-  .form-card button:hover{background:transparent;color:#fff;}
+  .form-card button:hover{background:transparent;color:#fff;transform:translateY(-2px);}
+  .form-card button:disabled{cursor:default;transform:none;}
   .form-note{font-size:.75rem;color:rgba(255,255,255,.85);margin-top:12px;text-align:center;}
 
   footer{padding:40px 0;border-top:1px solid #000;}
@@ -273,6 +285,13 @@
     .feature-list li{flex-direction:column;gap:2px;}
     .feature-list span{text-align:left;}
     .form-row{flex-direction:column;gap:0;}
+  }
+
+  /* SCROLL REVEAL — added only by JS; content is fully visible without it */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  .reveal.is-visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
   }
 </style>
 </head>
@@ -479,6 +498,25 @@
       btn.style.display = 'none';
     });
   });
+
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealTargets = document.querySelectorAll(
+      '#about .copy-inner, #about .media, #unit .copy-inner, #unit .media, #amenities .copy-inner, #amenities .media, .amenity-row figure, .loc-list-col, .loc-media-col, .audience div, .cta-grid > div, .form-card'
+    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    revealTargets.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i % 2) * 0.08 + 's';
+      observer.observe(el);
+    });
+  }
 
   document.getElementById('interest-form').addEventListener('submit', async (e) => {
     e.preventDefault();
