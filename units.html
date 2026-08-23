@@ -103,6 +103,13 @@
   @media (min-width:961px){
     .mobile-nav{display:none !important;}
   }
+  /* Between the hamburger breakpoint and full desktop width, the address
+     line has the least value — drop it and give the shortcuts its room
+     so they never get clipped. */
+  @media (min-width:961px) and (max-width:1300px){
+    header.site{grid-template-columns:1.3fr 3fr 1fr;}
+    header.site .nav-address{display:none;}
+  }
 
   .btn{
     display:inline-block;
